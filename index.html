@@ -16,11 +16,11 @@
 
     <main>
         <section class="tool-box">
-            <div class="priority" style="background-color: pink;" data-color=""></div>
-            <div class="priority" style="background-color: aqua;" data-color=""></div>
-            <div class="priority" style="background-color: lightgreen;" data-color=""></div>
-            <div class="priority" style="background-color: black;"></div>
-            <div class="priority" style="background-color: lightblue;">All</div>
+            <div data-priority="pink" class="priority" style="background-color: pink;" ></div>
+            <div data-priority="green" class="priority" style="background-color: lightgreen" ></div>
+            <div data-priority="blue" class="priority" style="background-color: lightskyblue" ></div>
+            <div data-priority="black" class="priority" style="background-color: grey;"></div>
+            <div data-priority="all" class="priority" style="background-color: lightcyan;">All</div>
         </section>
 
         <section class="task-board">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-action">
                         <button class="btn btn-primary" type="submit" id="create-task-btn">Create Task</button>
-                        <button class="btn btn-secondary" id="cancel-modal-btn">Cancel</button>
+                        <button class="btn btn-secondary" id="cancel-modal-btn" type="button">Cancel</button>
                     </div>
                 </form>
             </section>

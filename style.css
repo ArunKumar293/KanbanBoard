@@ -104,6 +104,7 @@ header{
     margin: 0.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 80px;
 }
 
@@ -125,4 +126,8 @@ header{
 
 i.bi{
     cursor: pointer;
+}
+
+.selected-priority{
+    border: 2px solid black;
 }
