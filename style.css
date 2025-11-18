@@ -91,10 +91,32 @@ header{
 
 .task-modal-content{
     border: 2px solid black;
-    width: 400px;
+    border-radius: 3%;
+    width: 500px;
+    height: 400px;
     margin: 10% auto;
-    padding: 1rem;
+    padding: 3rem;
     background-color: white;
+    align-content: center;
+}
+
+#add-task-modal-heading{
+    text-align: center;
+    align-content: center;
+    margin-bottom: 10px auto;
+    text-decoration: underline 2px ;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    margin: 10px auto;
+    gap: 20px;
+}
+
+#priority-color-selection label{
+     margin-right: 20px;
 }
 
 .task{

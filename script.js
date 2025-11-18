@@ -12,50 +12,21 @@ let selectedPriority = 'all';
 
 const priorities = ['pink', 'green', 'blue', 'black'];
 
-const tasks = [
-    
-    {
-        description:'Learn',
-        priority: 'pink',
-        status: 'todo',
-        createdAt: new Date().toISOString(),
-        id: uuid(),
-        locked: true
-    },
-
-    {
-        description:'Code',
-        priority: 'green',
-        status: 'todo',
-        createdAt: new Date().toISOString(),
-        id: uuid(),
-        locked: true
-
-    },
-
-    {
-        description:'read',
-        priority: 'blue',
-        status: 'inprogress',
-        createdAt: new Date().toISOString(),
-        id: uuid(),
-        locked: true
-    },
-
-    {
-        description:'Work',
-        priority: 'black',
-        status: 'done',
-        createdAt: new Date().toISOString(),
-        id: uuid(),
-        locked: false
-    }
-]
+let tasks = [];
 
 function uuid() {
     return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
         (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
     );
+}
+
+function loadTasksFromLocalStorage(){
+    const initialTaks = JSON.parse(window.localStorage.getItem('tasks') || '[]' );
+    tasks = initialTaks;
+}
+
+function syncLocalStorage(){
+    window.localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 
 function createLockElement(task){
@@ -64,6 +35,7 @@ function createLockElement(task){
     i.addEventListener('click', ()=> {
         task.locked = !task.locked;
         renderTasks();
+        syncLocalStorage();
     });
     return i;
 
@@ -74,7 +46,8 @@ function updatePriority(taskId, newPriority){
     if(task){
         task.priority = newPriority;
     }
-    renderTasks()
+    renderTasks();
+    syncLocalStorage();
 }
 
 function createPrioritySelection(task) {
@@ -102,6 +75,7 @@ function deleteTask(id){
     const index = tasks.findIndex((task) => task.id === id);
     tasks.splice(index,1);
     renderTasks();
+    syncLocalStorage();
 }
 
 function createTask(task){
@@ -170,6 +144,7 @@ function addTask(description,priority) {
     }
     tasks.push(newTask);
     renderTasks();
+    syncLocalStorage();
 }
 
 function setEventListeners() {
@@ -213,14 +188,15 @@ function setEventListeners() {
             selectedPriority = currselectedPriority;
 
             renderTasks();
+            syncLocalStorage();
         });
     }
 }
 
 function initializeApp() {
+    loadTasksFromLocalStorage();
     setEventListeners();
     renderTasks()
-
 }
 
 initializeApp();

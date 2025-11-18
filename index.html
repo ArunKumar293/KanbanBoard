@@ -40,22 +40,27 @@
 
         <section id="add-task-modal">
             <section class="task-modal-content">
-                <h3>Add New Task</h3>
-                <form>
+                <h3 id="add-task-modal-heading">Add New Task</h3>
+                <form id="form">
                     <div class="form-group">
                         <label class="form-label" for="task-description">Task Description:</label>
                         <textarea class="form-control" id="task-description"></textarea>
                     </div>
                     <h4>Priority Color</h4>
-                    <div>
-                        <label for="pink">Pink</label>
+                    <div id="priority-color-selection">
+
                         <input type="radio" id="pink" name="priority" value="pink" checked>
-                        <label for="green">Green</label >
+                        <label for="pink">Pink</label>
+                        
                         <input type="radio" id="green" name="priority" value="green">
-                        <label for="blue">Blue</label >
+                        <label for="green">Green</label >
+                       
                         <input type="radio" id="blue" name="priority" value="blue">
-                        <label for="black">Black</label>
+                        <label for="blue">Blue</label >
+                        
                         <input type="radio" id="black" name="priority" value="black">
+                        <label for="black">Black</label>
+                        
                     </div>
                     <div class="form-action">
                         <button class="btn btn-primary" type="submit" id="create-task-btn">Create Task</button>
